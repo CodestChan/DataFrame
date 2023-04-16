@@ -2,31 +2,37 @@
 
 constexpr auto MAXSIZE = 100;
 
-//初始化顺序表
+/// <summary>
+/// 初始化顺序表
+/// </summary>
+/// <param name="L">顺序表</param>
+/// <returns>0或-1表示函数是否正常运行</returns>
 int InitList(SqList& L) {
 	L.elem = new int[MAXSIZE];
 	if (!L.elem) return -1;
 	L.length = 0;
+	return 0;
 }
 
-//顺序表取值
-/*
-* L:传入需要操作的顺序表；
-* i:需要取值的位置(位序而非下标，表示第i个元素)；
-* e:传入一个变量，将取到的值赋给e;
-*/
+/// <summary>
+/// 顺序表取值
+/// </summary>
+/// <param name="L">传入需要操作的顺序表</param>
+/// <param name="i">需要取值的位置(位序而非下标，表示第i个元素)</param>
+/// <param name="e">传入一个变量，将取到的值赋给e</param>
+/// <returns>0或-1表示函数是否正常运行</returns>
 int GetElem(SqList L, int i, int& e) {
 	if (i<1 || i>L.length) return -1;
 	e = L.elem[i - 1];
 	return 0;
 }
 
-//顺序表的查找
-/*
-* L:需要操作的顺序表;
-* e:查找的元素；
-* 函数返回元素所在的下标；
-*/
+/// <summary>
+/// 顺序表的查找
+/// </summary>
+/// <param name="L">需要操作的顺序表</param>
+/// <param name="e">查找的元素</param>
+/// <returns>元素所在的下标</returns>
 int LocateElem(SqList L, int e) {
 	for (int i = 0; i < L.length; i++) {
 		if (L.elem[i] == e) return i;
@@ -34,12 +40,13 @@ int LocateElem(SqList L, int e) {
 	return -1;
 }
 
-//顺序表的插入
-/*
-* L:需要操作的顺序表;
-* i:插入的位置，是位序而非下标；
-* e:插入的元素；
-*/
+/// <summary>
+/// 顺序表的插入
+/// </summary>
+/// <param name="L">需要操作的顺序表</param>
+/// <param name="i">插入的位置，是位序而非下标</param>
+/// <param name="e">插入的元素</param>
+/// <returns>0或-1表示函数是否正常运行</returns>
 int ListInsert(SqList& L, int i, int e) {
 	if ((i < 1) || (i > L.length + 1)) return -1;
 	if (L.length == MAXSIZE) return -1;
@@ -50,11 +57,12 @@ int ListInsert(SqList& L, int i, int e) {
 	return 0;
 }
 
-//顺序表的删除
-/*
-* L:需要操作的顺序表;
-* i:需要删除元素的位序；
-*/
+/// <summary>
+/// 顺序表的删除
+/// </summary>
+/// <param name="L">需要操作的顺序表</param>
+/// <param name="i">需要删除元素的位序</param>
+/// <returns>0或-1表示函数是否正常运行</returns>
 int ListDelete(SqList& L, int i) {
 	if ((i < 1) || (i > L.length)) return -1;
 	for (int j = i; j <= L.length - 1; j++)
@@ -69,19 +77,23 @@ void TraverseList(SqList L) {
 	}
 }
 
-//初始化单链表（带头结点）
+/// <summary>
+/// 初始化单链表
+/// </summary>
+/// <param name="L">传入头指针</param>
 void InitLinkList(LinkList& L) {
 	L = new LNode;
 	L->next = NULL;
 	return;
 }
 
-//单链表取值
-/*
-* L:要取值的链表;
-* i:取值的位置;
-* e:将取到的值赋给e;
-*/
+/// <summary>
+/// 单链表取值
+/// </summary>
+/// <param name="L">要取值的链表</param>
+/// <param name="i">取值的位置</param>
+/// <param name="e">将取到的值赋给e</param>
+/// <returns>0或-1表示函数是否正常运行</returns>
 int GetLinkElem(LinkList L, int i, int& e) {
 	LinkList p;
 	p = L->next;
@@ -95,12 +107,12 @@ int GetLinkElem(LinkList L, int i, int& e) {
 	return 0;
 }
 
-//单链表的按值查找
-/*
-* L:需要查找的链表;
-* e:需要查找的值;
-* 函数返回所查找值的地址
-*/
+/// <summary>
+/// 单链表的按值查找
+/// </summary>
+/// <param name="L">需要查找的链表</param>
+/// <param name="e">需要查找的值</param>
+/// <returns>e所在结点的地址</returns>
 LNode* LocateLinkElem(LinkList L, int e) {
 	LinkList p;
 	p = L->next;
@@ -109,12 +121,13 @@ LNode* LocateLinkElem(LinkList L, int e) {
 	return p;
 }
 
-//单链表的插入
-/*
-* L:要插入的链表;
-* i:插入的位序;
-* e:插入的值;
-*/
+/// <summary>
+/// 单链表的插入
+/// </summary>
+/// <param name="L">要插入的链表</param>
+/// <param name="i">插入的位序</param>
+/// <param name="e">插入的值</param>
+/// <returns>-1或0表示函数是否正常运行</returns>
 int ListLinkInsert(LinkList& L, int i, int e) {
 	LinkList p = L;
 	int j = 0;
@@ -130,11 +143,12 @@ int ListLinkInsert(LinkList& L, int i, int e) {
 	return 0;
 }
 
-//单链表的删除
-/*
-* L:要操作的链表;
-* i:删除的位置;
-*/
+/// <summary>
+/// 删除指定位置元素
+/// </summary>
+/// <param name="L">所要操作的链表</param>
+/// <param name="i">元素的位序</param>
+/// <returns>返回-1或0来表示函数是否正常运行</returns>
 int ListLinkDelete(LinkList& L, int i) {
 	LinkList p = L;
 	int j = 0;
@@ -147,5 +161,39 @@ int ListLinkDelete(LinkList& L, int i) {
 	p->next = q->next;
 	delete q;
 	return 0;
+}
+
+/// <summary>
+/// 使用前插法来创建单链表
+/// </summary>
+/// <param name="L">传入头指针</param>
+/// <param name="n">创建的长度</param>
+void CreateList_H(LinkList& L, int n) {
+	L = new LNode;
+	L->next = NULL;
+	for (int i = 0; i < n; i++) {
+		LinkList p = new LNode;
+		cin >> p->data;
+		p->next = L->next;
+		L->next = p;
+	}
+}
+
+/// <summary>
+/// 后插法创建单链表
+/// </summary>
+/// <param name="L">传入头指针</param>
+/// <param name="n">链表长度</param>
+void CreteList_R(LinkList& L, int n) {
+	L = new LNode;
+	L->next = NULL;
+	LinkList r = L;
+	for (int i = 0; i < n; i++) {
+		LinkList p = new LNode;
+		cin >> p->data;
+		p->next = NULL;
+		r->next = p;
+		r = p;
+	}
 }
 

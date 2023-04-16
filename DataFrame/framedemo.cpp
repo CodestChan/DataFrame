@@ -2,6 +2,17 @@
 
 int main() {
 	LinkList L;
+	CreteList_R(L, 4);
+	LinkList p = L->next;
+	while (p) {
+		cout << p->data << endl;
+		p = p->next;
+	}
+	return 0;
+}
+
+/*
+* 	LinkList L;
 	InitLinkList(L);
 	ListLinkInsert(L, 1, 15);
 	ListLinkInsert(L, 2, 52);
@@ -19,9 +30,7 @@ int main() {
 	cout << "第二个元素是：" << elem<<endl;
 	cout << "数值为52的元素位置是：" << index << endl;
 	cout << index->data << " " << index->next << endl;
-	return 0;
-}
-
+*/
 /*
  	SqList L;
 	InitList(L);
