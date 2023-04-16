@@ -21,10 +21,21 @@
     <ClCompile Include="framedemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="otherstruct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataframe.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="otherstruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="demos.txt">
+      <Filter>头文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

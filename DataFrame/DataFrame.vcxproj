@@ -129,9 +129,14 @@
   <ItemGroup>
     <ClCompile Include="dataframe.cpp" />
     <ClCompile Include="framedemo.cpp" />
+    <ClCompile Include="otherstruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataframe.h" />
+    <ClInclude Include="otherstruct.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="demos.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
