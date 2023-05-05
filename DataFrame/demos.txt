@@ -34,3 +34,28 @@
 	cout << "数值为52的元素位置是：" << index << endl;
 	cout << index->data << " " << index->next << endl;
 */
+
+//循环链表测试：插入和遍历
+/*
+	CirLink L;
+	InitCirLink(L);
+	CirLinkInsert(L, 1, 23);
+	CirLinkInsert(L, 1, 24);
+	CirLink p;
+	p = L;
+	while (p->next != L) {
+		p = p->next;
+		cout << p->cdata << endl;
+	}
+	return 0;
+*/
+//循环链表测试：循环遍历
+/*
+	CirLink p=L;
+	for (int i = 0; i < 10; i++) {
+		p = p->next;
+		if (p == L)continue;
+		cout << p->cdata << endl;
+		cout << endl;
+	}
+*/
