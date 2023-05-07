@@ -59,3 +59,62 @@
 		cout << endl;
 	}
 */
+
+//Ë«ÏòÁ´±í²âÊÔ
+/*
+	DuLinkList L;
+	InitDuLink(L);
+	CreateDul(L, 2);
+	DulInsert(L, 1, 5);
+	DuLinkList p = L;
+	while (p->next != nullptr) {
+		p=p->next;
+		cout << p->Ddata << endl;
+	}
+*/
+
+//Õ»²âÊÔ
+/*
+	SqStack S;
+	InitStack(S);
+	Push(S, 12);
+	Push(S, 58);
+	Push(S, 10);
+	int* p = S.top;
+	while (p != S.base) {
+		p--;
+		cout << *p << endl;
+	}
+	int g;
+	Pop(S, g);
+	cout << g << endl;
+	int* s = S.top;
+	while (s != S.base) {
+		s--;
+		cout << *s << endl;
+	}
+*/
+
+//Á´Õ»²âÊÔ
+/*
+	LinkStack S;
+	InitStack(S);
+	Push(S, 12);
+	Push(S, 58);
+	Push(S, 10);
+	LinkStack p;
+	p = S;
+	while (p != nullptr) {
+		cout << p->data << endl;
+		p = p->next;
+	}
+	int g;
+	Pop(S, g);
+	cout << g << endl;
+	LinkStack s;
+	s = S;
+	while (s != nullptr) {
+		cout << s->data << endl;
+		s = s->next;
+	}
+*/

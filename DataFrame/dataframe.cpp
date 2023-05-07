@@ -197,3 +197,77 @@ void CreteList_R(LinkList& L, int n) {
 	}
 }
 
+/// <summary>
+/// 初始化栈
+/// </summary>
+/// <param name="S">要操作的栈</param>
+/// <returns>操作成功返回真</returns>
+bool InitStack(SqStack& S) {
+	S.base = new int[MAXSIZE];
+	if (!S.base)return false;
+	S.top = S.base;
+	S.stacksize = MAXSIZE;
+	return true;
+}
+
+/// <summary>
+/// 压栈操作
+/// </summary>
+/// <param name="S">操作栈</param>
+/// <param name="e">要压入的数据</param>
+/// <returns>操作成功返回真</returns>
+bool Push(SqStack& S, int e) {
+	if (S.top - S.base == S.stacksize)return false;
+	*S.top = e;
+	S.top++;
+	return true;
+}
+
+/// <summary>
+/// 出栈操作
+/// </summary>
+/// <param name="S">操作栈</param>
+/// <param name="e">出栈数据赋予变量</param>
+/// <returns>操作成功返回真</returns>
+bool Pop(SqStack& S, int& e) {
+	if (S.top == S.base)return false;
+	S.top--;
+	e = *S.top;
+	return true;
+}
+
+/// <summary>
+/// 取栈顶元素
+/// </summary>
+/// <param name="S">操作栈</param>
+/// <returns>返回栈顶元素</returns>
+int GetTop(SqStack S) {
+	if (S.top != S.base)return *(S.top - 1);
+}
+
+bool InitStack(LinkStack& S) {
+	S = nullptr;
+	return true;
+}
+
+bool Push(LinkStack& S, int e) {
+	LinkStack p = new StackNode;
+	p->data = e;
+	p->next = S;
+	S = p;
+	return true;
+}
+
+bool Pop(LinkStack& S, int& e) {
+	if (S == nullptr)return false;
+	LinkStack p;
+	e = S->data;
+	p = S;
+	S = S->next;
+	delete p;
+	return true;
+}
+
+int GetTop(LinkStack S) {
+	if (S != nullptr)return S->data;
+}
