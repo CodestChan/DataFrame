@@ -118,3 +118,43 @@
 		s = s->next;
 	}
 */
+
+//∂”¡–≤‚ ‘
+/*
+	SqQueue Q;
+	InitQueue(Q);
+	EnQueue(Q, 12);
+	EnQueue(Q, 58);
+	EnQueue(Q, 10);
+	int q = Q.front;
+	while (q % MAXSIZE != Q.rear) {
+		cout << Q.base[q] << endl;
+		q = (q + 1) % MAXSIZE;
+	}
+*/
+
+//¡¥∂”≤‚ ‘
+/*
+	LinkQueue Q;
+	InitQueue(Q);
+	EnQueue(Q, 12);
+	EnQueue(Q, 58);
+	EnQueue(Q, 10);
+	QueuePtr p;
+	p = Q.front;
+	while (p->next != nullptr) {
+		p = p->next;
+		cout << p->data << endl;
+	}
+	cout << endl;
+	int e;
+	DeQueue(Q, e);
+	cout << e << endl;
+	cout << endl;
+	QueuePtr s;
+	s = Q.front;
+	while (s->next!=nullptr) {
+		s = s->next;
+		cout << s->data << endl;
+	}
+*/

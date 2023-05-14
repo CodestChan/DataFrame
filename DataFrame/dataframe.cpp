@@ -1,7 +1,5 @@
 #include "dataframe.h"
 
-constexpr auto MAXSIZE = 100;
-
 /// <summary>
 /// 初始化顺序表
 /// </summary>
@@ -270,4 +268,90 @@ bool Pop(LinkStack& S, int& e) {
 
 int GetTop(LinkStack S) {
 	if (S != nullptr)return S->data;
+}
+
+/// <summary>
+/// 队列初始化
+/// </summary>
+/// <param name="Q">操作队列</param>
+/// <returns>操作成功返回真</returns>
+bool InitQueue(SqQueue& Q) {
+	Q.base = new int[MAXSIZE];
+	if (!Q.base)return false;
+	Q.front = Q.rear = 0;
+	return true;
+}
+
+/// <summary>
+/// 求队列长
+/// </summary>
+/// <param name="Q">操作最烈</param>
+/// <returns>返回长度</returns>
+int QueueLength(SqQueue Q) {
+	return(Q.rear - Q.front + MAXSIZE) % MAXSIZE;
+}
+
+/// <summary>
+/// 入队操作
+/// </summary>
+/// <param name="Q">操作队列</param>
+/// <param name="e">入队元素</param>
+/// <returns>操作成功返回真</returns>
+bool EnQueue(SqQueue& Q, int e) {
+	if ((Q.rear + 1) % MAXSIZE == Q.front)return false;
+	Q.base[Q.rear] = e;
+	Q.rear = (Q.rear + 1) % MAXSIZE;
+	return true;
+}
+
+/// <summary>
+/// 出队操作
+/// </summary>
+/// <param name="Q">操作队列</param>
+/// <param name="e">出队元素要赋予的变量</param>
+/// <returns>操作成功返回真</returns>
+bool DeQueue(SqQueue& Q, int& e) {
+	if (Q.front == Q.rear)return false;
+	e = Q.base[Q.front];
+	Q.front = (Q.front + 1) % MAXSIZE;
+	return true;
+}
+
+/// <summary>
+/// 取队头元素
+/// </summary>
+/// <param name="Q">操作队列</param>
+/// <returns>返回队头元素</returns>
+int GetHead(SqQueue Q) {
+	if (Q.front != Q.rear)
+		return Q.base[Q.front];
+}
+
+bool InitQueue(LinkQueue& Q) {
+	Q.front = Q.rear = new QNode;
+	Q.front->next = nullptr;
+	return true;
+}
+
+bool EnQueue(LinkQueue& Q, int e) {
+	QueuePtr p = new QNode;
+	p->data = e;
+	p->next = nullptr; Q.rear->next = p;
+	Q.rear = p;
+	return true;
+}
+
+bool DeQueue(LinkQueue& Q, int& e) {
+	if (Q.front == Q.rear)return false;
+	QueuePtr p = Q.front->next;
+	e = p->data;
+	Q.front->next = p->next;
+	if (Q.rear == p)Q.rear = Q.front;
+	delete p;
+	return true;
+}
+
+int GetHead(LinkQueue Q) {
+	if (Q.front != Q.rear)
+		return Q.front->next->data;
 }

@@ -4,6 +4,7 @@
 #include<cstdio>
 #include<string.h>
 using namespace std;
+constexpr auto MAXSIZE = 100;
 
 //À≥–Ú±Ì
 typedef struct {
@@ -58,3 +59,32 @@ bool InitStack(LinkStack& S);
 bool Push(LinkStack& S, int e);
 bool Pop(LinkStack& S, int& e);
 int GetTop(LinkStack S);
+
+/// <summary>
+/// ∂”¡–
+/// </summary>
+typedef struct {
+	int* base;
+	int front;
+	int rear;
+}SqQueue;
+
+bool InitQueue(SqQueue& Q);
+int QueueLength(SqQueue Q);
+bool EnQueue(SqQueue& Q, int e);
+bool DeQueue(SqQueue& Q, int& e);
+int GetHead(SqQueue Q);
+
+typedef struct QNode {
+	int data;
+	struct QNode* next;
+}QNode,*QueuePtr;
+typedef struct {
+	QueuePtr front;
+	QueuePtr rear;
+}LinkQueue;
+
+bool InitQueue(LinkQueue& Q);
+bool EnQueue(LinkQueue& Q, int e);
+bool DeQueue(LinkQueue& Q, int& e);
+int GetHead(LinkQueue Q);
